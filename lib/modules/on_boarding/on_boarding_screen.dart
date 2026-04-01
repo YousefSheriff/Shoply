@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shoply/modules/shop_login/shop_login_screen.dart';
 import 'package:shoply/shared/components/components.dart';
 import 'package:shoply/shared/network/local/cache_helper.dart';
 import 'package:shoply/shared/styles/color.dart';
@@ -181,7 +182,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     {
       if(value)
       {
-        //navigateAndFinish(context, ShopLoginScreen());
+        navigateAndFinish(context, ShopLoginScreen());
 
       }
     });
