@@ -2,12 +2,15 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shoply/modules/on_boarding/on_boarding_screen.dart';
+import 'package:shoply/modules/layout/layout_screen.dart';
+import 'package:shoply/modules/shop_login/shop_login_screen.dart';
 import 'package:shoply/shared/app_main_cubit/main_cubit.dart';
 import 'package:shoply/shared/app_main_cubit/main_states.dart';
 import 'package:shoply/shared/components/constant.dart';
+import 'package:shoply/shared/shop_cubit/bloc_observer.dart';
 import 'package:shoply/shared/network/local/cache_helper.dart';
 import 'package:shoply/shared/network/remote/dio_helper.dart';
-import 'package:shoply/shared/shop_cubit/bloc_observer.dart';
+import 'package:shoply/shared/shop_cubit/cubit.dart';
 import 'package:shoply/shared/styles/themes.dart';
 
 void main() async
@@ -26,11 +29,11 @@ void main() async
   {
     if (token != null)
     {
-      startWidget = const OnBoardingScreen();
+      startWidget = const ShopLayoutScreen();
     }
     else
     {
-      startWidget = OnBoardingScreen();
+      startWidget = ShopLoginScreen();
     }
   }
   else
@@ -61,12 +64,12 @@ class MyApp extends StatelessWidget {
               return ShopMainCubit()..changeAppMode(fromShared: isDark);
             }
         ),
-        // BlocProvider(
-        //     create: (BuildContext context)
-        //     {
-        //       return ShopCubit()..getHomeProductData()..getCategoriesData()..getFavoritesData();//   ..getHomeProductData()..getCategoriesData()..getFavoritesData()..getCartsData()
-        //     }
-        // ),
+        BlocProvider(
+            create: (BuildContext context)
+            {
+              return ShopCubit()..getHomeProductData()..getCategoriesData()..getFavoritesData();//   ..getHomeProductData()..getCategoriesData()..getFavoritesData()..getCartsData()
+            }
+        ),
       ],
       child: BlocConsumer<ShopMainCubit, ShopAppMainStates>(
         listener: (context, state) {},

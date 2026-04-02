@@ -1,12 +1,14 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shoply/modules/layout/layout_screen.dart';
 import 'package:shoply/modules/shop_login/login_cubit/cubit.dart';
 import 'package:shoply/modules/shop_login/login_cubit/states.dart';
 import 'package:shoply/modules/shop_register_screen/shop_register_screen.dart';
 import 'package:shoply/shared/components/components.dart';
 import 'package:shoply/shared/components/constant.dart';
 import 'package:shoply/shared/network/local/cache_helper.dart';
+import 'package:shoply/shared/shop_cubit/cubit.dart';
 import 'package:shoply/shared/styles/color.dart';
 
 
@@ -30,27 +32,27 @@ class ShopLoginScreen extends StatelessWidget
       child: BlocConsumer<ShopLoginCubit,ShopLoginStates>(
         listener: (context ,state)
         {
-          // if(state is ShopLoginSuccessState)
-          // {
-          //   if(state.model.status == true)
-          //   {
-          //     print(state.model.data!.token);
-          //     showToast(message:state.model.message, state: ToastStates.SUCCESS);
-          //     CacheHelper.saveData(key: 'token', value: state.model.data!.token).then((value)
-          //     {
-          //       token = state.model.data!.token ;
-          //       ShopCubit.get(context).getUserData();   // verrrrrrrrrrrry importaaaaaaaaant
-          //       navigateAndFinish(context, ShopLayoutScreen());
-          //     });
-          //
-          //   }
-          //   else
-          //   {
-          //     showToast(message:state.model.message, state: ToastStates.ERROR);
-          //
-          //   }
-          //
-          // }
+          if(state is ShopLoginSuccessState)
+          {
+            if(state.model.status == true)
+            {
+              print(state.model.data!.token);
+              showToast(message:state.model.message, state: ToastStates.SUCCESS);
+              CacheHelper.saveData(key: 'token', value: state.model.data!.token).then((value)
+              {
+                token = state.model.data!.token ;
+                ShopCubit.get(context).getUserData();   // verrrrrrrrrrrry importaaaaaaaaant
+                navigateAndFinish(context, ShopLayoutScreen());
+              });
+
+            }
+            else
+            {
+              showToast(message:state.model.message, state: ToastStates.ERROR);
+
+            }
+
+          }
         },
         builder: (context ,state)
         {
@@ -114,10 +116,10 @@ class ShopLoginScreen extends StatelessWidget
                           prefixIcon: Icons.lock_outline_rounded,
                           onSubmit: (val)
                           {
-                            // if(formKey.currentState!.validate())
-                            // {
-                            //   ShopLoginCubit.get(context).userLogin(email: emailController.text, password: passwordController.text);
-                            // }
+                            if(formKey.currentState!.validate())
+                            {
+                              ShopLoginCubit.get(context).userLogin(email: emailController.text, password: passwordController.text);
+                            }
 
                           },
                           suffixOnPressed: ()
@@ -141,10 +143,13 @@ class ShopLoginScreen extends StatelessWidget
                               text: 'Sign In',
                               Function: ()
                               {
-                                // if(formKey.currentState!.validate())
-                                // {
-                                //   ShopLoginCubit.get(context).userLogin(email: emailController.text, password: passwordController.text);
-                                // }
+                                if(formKey.currentState!.validate())
+                                {
+                                  ShopLoginCubit.get(context).userLogin(email: emailController.text, password: passwordController.text);
+                                }
+
+                                // navigateAndFinish(context, ShopLayoutScreen());
+
 
                               },
                             );
