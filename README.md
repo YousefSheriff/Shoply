@@ -6,7 +6,7 @@ A modern Flutter e-commerce application.
 
 ## 🎥 Demo
 
-![Watch Demo](assets/demo/shoply_demo.mp4)
+[![Watch Demo](assets/demo/thumbnail.png)](assets/demo/demomp4.mp4)
 
 ---
 
