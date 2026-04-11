@@ -1,3 +1,3 @@
-## 🎥 Demo
+## 🎬 Demo Video
 
-https://raw.githubusercontent.com/YousefSheriff/Shoply/main/assets/demo/demomp4.mp4
+<video src="assets/demo.mp4" controls width="600"></video>
