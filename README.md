@@ -1,3 +1,26 @@
+# 🛍️ Shoply App
+
+A modern Flutter e-commerce application.
+
+---
+
 ## 🎥 Demo
 
-https://raw.githubusercontent.com/YousefSheriff/Shoply/main/assets/demo/shoply_demo.mp4
+[![Watch Demo]](assets/demo/shoply_demo.mp4)
+
+---
+
+## ✨ Features
+
+* User-friendly UI
+* Product listing
+* Shopping cart
+* Clean architecture
+
+---
+
+## 🛠️ Tech Stack
+
+* Flutter
+* Dart
+* Firebase (if used)
